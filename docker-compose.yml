@@ -19,17 +19,18 @@ services:
     #volumes:
     #  - ./realm-config:/opt/jboss/keycloak/realm-config
     environment:
-      - KEYCLOAK_USER=deviam
-      - KEYCLOAK_PASSWORD=deviam
-      - FHIR_AUD_ISSUER=http://docker.for.mac.localhost:9080/auth/realms/fhirdev/v1
-      - DB_VENDOR-POSTGRES
-      - DB_ADDR=postgres
-      - DB_DATABASE-keycloak
-      - DB_USER-keycloak
-      - DB_SCHEMA: public
-      - DB_PASSWORD: password
+      KEYCLOAK_USER: deviam
+      KEYCLOAK_PASSWORD: deviam
+      FHIR_AUD_ISSUER: http://docker.for.mac.localhost:9080/auth/realms/fhirdev/v1
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
   ports:
       - 8080:8080
       # - 9443:9443
       # - 10990:10990
-      
+  depends_on:
+    - postgres    
